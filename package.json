@@ -1,0 +1,28 @@
+{
+  "name": "html-lecture-demo",
+  "version": "1.0.0",
+  "description": "Demo for the Codemsith HTML/CSS advanced topics lecture",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chmccc/HTML-lecture-demo.git"
+  },
+  "author": "chmccc",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chmccc/HTML-lecture-demo/issues"
+  },
+  "homepage": "https://github.com/chmccc/HTML-lecture-demo#readme",
+  "dependencies": {
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4"
+  }
+}
