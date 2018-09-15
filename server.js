@@ -1,3 +1,12 @@
+/** @name server.js
+ * @description HTML/CSS Demo Application server
+ * Suggest use of 'Live Server' VSCode extension for easy reloading of Chrome,
+ * but this was created also, for use with nodemon run npm start
+ * @author chmccc
+ * @date 9/14/18
+ * {@link http://localhost:5555/}
+ */
+
 const express = require('express')
 const app = express();
 const cors = require('cors');

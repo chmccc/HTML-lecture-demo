@@ -1,0 +1,80 @@
+#vanilla {
+  border-radius: 3px;
+  background-color: grey;
+}
+
+h2 {
+  margin: 0;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+.nav {
+  background-color: blue;
+  height: 100px;
+}
+
+.big-ad {
+  background-color: red;
+  float: left;
+  min-width: 200px;
+  width: 20%;
+  height: 700px;
+}
+
+.content {
+  height: 100%;
+}
+
+.articles {
+  background-color: green;
+  height: 600px;
+  width: 60%;
+  float: left;
+}
+
+.articles-wrapper {
+  display: block;
+  height: auto;
+}
+
+.articles-wrapper article {
+  background-color: darkgreen;
+  margin: 10px;
+  width: 30%;
+  font-size: .6em;
+  float: left;
+  box-shadow: 4px 5px rgba(0, 45, 0, 0.667);
+}
+
+.articles-wrapper article * {
+  margin: 10px;
+}
+
+.news {
+  background-color: darkorange;
+  width: 20%;
+  height: 600px;
+  float: left;
+  overflow: scroll;
+  min-height: 300px;
+}
+
+.news article {
+  margin: 10px;
+  font-size: .5em
+}
+
+.news-article h3 {
+  font-size: 1em;
+  text-decoration: underline;
+}
+
+.footer {
+  clear: both;
+  background-color: slategray;
+  height: 100px;
+}
+
+/* LETS GET RESPONSIVE! */
+

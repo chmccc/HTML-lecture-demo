@@ -1,3 +1,50 @@
-* {
+/* * {
   border: 1px dotted slategray !important;
+} */
+
+.title {
+  background-color: black;
+  font-size: .8em;
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.title div {
+  min-width: 100px;
+  padding: 5px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  text-align: center;
+}
+
+a:hover {
+  text-transform: lowercase;
+  color: lightcyan;
+}
+
+a:active {
+  color: red;
+}
+
+hr {
+  color: black;
+  background-color: black !important;
+  margin: 0 auto !important;
+}
+
+body {
+  margin: 0 auto !important;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 1.5em;
+  color: lightgray;
+  background: slategray;
+}
+
+body div * {
+  display: block;
+  margin: 0 auto;
 }
