@@ -1,0 +1,132 @@
+/*
+@name CSS Grid/Flexbox design 
+Here we introduce grid for layout and implement both flexbox & grid together.
+Note: Since mobile is just 1 column, there's no real use for grid. We copy the flexbox setup,
+so start with the first @media query 
+@author chmccc
+@date 9/14/18 
+*/
+
+nav {
+  width: 100%;
+  position: fixed;
+  top: 0px;
+  z-index: 99;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main {
+  position: relative;
+  top: 100px;
+}
+
+.big-ad {
+  display: flex;
+  height: 200px;
+  align-items: center;
+  justify-content: center;
+}
+
+.articles {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.news {
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  position: relative;
+  top: 100px;
+}
+
+/* tablet size -- here's where grid comes in, but only on some children */
+
+@media screen and (min-width: 768px) {
+
+  .main {
+    /* we could just as well use flexbox here, but let's see a grid example */
+    display: grid;
+    /* initialize the grid -- declare each column & row's width or height on one line */
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 200px auto;
+  }
+
+  .big-ad {
+    /* assign an element to span an area of the grid by index */
+    grid-column-start: 1;
+    grid-column-end: 4;
+  }
+
+  .articles {
+    /* shorthand for column-start and column-end */
+    grid-column: 1 / span 2;
+  }
+
+  /* bonus! let's make the articles scroll left & right */
+  
+  .articles-wrapper {
+    /* must have a width to scroll - here, we just take up the whole grid cell */
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+    flex-wrap: nowrap; /* force one row */
+    overflow-x: auto; /* will scroll if necessary */
+  }
+
+  .articles-wrapper article {
+    /* for "definite" widths, use viewport width instead of pixels */
+    flex: 0 0 20vw; /* 30vw means 30% of viewport width  */
+  }
+
+}
+
+/* desktop/HD tablet in landscape - here's where grid shines for layout...
+note that a comma is akin to an OR (there's no built-in OR) */
+
+@media screen and (min-width: 1024px), screen and (min-width: 768px) and (orientation: landscape) {
+
+  /* we can assign names to areas in the grid, and set each element's
+  position in the grid to one of those areas */
+  .main {
+    top: auto;
+    grid-template-columns: 200px 2fr 1fr;
+    grid-template-rows: 100px 1fr;
+    grid-template-areas: 
+    "big-ad nav nav"
+    "big-ad articles news"
+  }
+
+  .big-ad {
+    /* in ONE LINE we achieve what required a different structure and tons of styling in vanilla CSS!!! */
+    grid-area: big-ad;
+    height: 100%;
+  }
+
+  .nav {
+    position: relative;
+    grid-area: nav;
+  }
+
+  .articles {
+    grid-area: articles;
+  }
+
+  .news {
+    grid-area: news;
+  }
+
+  .articles-wrapper {
+    flex-wrap: wrap;
+  }
+
+  .articles-wrapper article {
+    flex: 1 1 40%;
+  }
+}
