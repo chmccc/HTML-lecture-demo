@@ -1,0 +1,114 @@
+/* 
+@name Flexbox CSS MOBILE-FIRST design
+Note that this example does not span the ad over the navbar -- we're saving that for grid.
+@author chmccc
+@date 9/14/18 
+*/
+
+/* we START by styling the site for smartphone screen size! */
+
+nav {
+  width: 100%;
+  position: fixed;
+  top: 0px;
+  z-index: 99;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main {
+  position: relative;
+  top: 100px;
+}
+
+.big-ad {
+  display: flex;
+  /* direction is implied as row */
+  height: 200px;
+  /* aka vertical align */
+  align-items: center;
+  /* aka horizontal align */
+  justify-content: center;
+}
+
+.articles {
+  display: flex;
+  flex-direction: column;
+  /* now THIS is vertical align, because column -- technically unnecessary here, default */
+  justify-content: flex-start;
+  /* now THIS is horizontal align */
+  align-items: center;
+}
+
+.news {
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  position: relative;
+  top: 100px;
+}
+
+/* begin media queries -- we're scaling UP from phone to tablet first */
+
+@media screen and (min-width: 768px) {
+
+  .main {
+    display: flex;
+    flex-wrap: wrap;
+    /* make all items take up the same height in a row */
+    align-content: stretch;
+  }
+
+  .big-ad {
+    width: 100%;
+    flex-grow: 0; /* no growing */
+    flex-shrink: 0; /* no shrinking */
+    flex-basis: 100%; /* take up the whole width of the container */
+    /* shorthand for above: */
+    /* flex: 0 0 100%; */
+  }
+
+  .articles {
+    flex: 1 1 50%; /* force articles to be 60% of the row */
+  }
+
+  .news {
+    flex: 1; /* reset news to default flex-item values */
+  }
+}
+
+/* FINALLY, we scale UP to desktop -- look how little we have to do to achieve this with flexbox! */
+
+@media screen and (min-width: 1281px) {
+  .main {
+    /* setting a height sometimes makes sense for desktop, makes it feel more like an application */
+    height: 700px;
+  }
+
+  .big-ad {
+    /* auto height to allow it to stretch tall */
+    height: auto;
+    flex: 0 0 200px; /* always 200px wide */
+  }
+  
+  .articles-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    /* switch direction & re-center -- that's it! */
+    flex-direction: row; 
+    justify-content: space-evenly;
+    align-items: stretch;
+  }
+  
+  .articles-wrapper article {
+    /* let's make the articles wrap 2 per row using width -- try uncommenting HTML file so that there's more */
+    max-width: 40%; /* try changing me! */
+  }
+
+  .articles, .news {
+    overflow: scroll;
+  }
+}
