@@ -1,0 +1,184 @@
+
+/* 
+@name "Vanilla" CSS DESKTOP FIRST design
+No JS, flexbox, no grid -- this is a nightmare, nobody should have to go through this,
+but that's the point -- why would you?
+Works somewhat for common device sizes, but sloppy. Play around with orientations and also just 
+drag-resizing the window and watch it break!
+@author chmccc
+@date 9/14/18 
+*/
+
+body div * {
+  margin: 0;
+}
+
+h2 {
+  margin: 0;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+.nav {
+  background-color: blue;
+  height: 100px;
+}
+
+.big-ad {
+  background-color: red;
+  float: left;
+  min-width: 200px;
+  width: 10vw;
+  height: 900px;
+}
+
+.content {
+  height: 100%;
+}
+
+.articles {
+  padding: 0;
+  margin: 0 auto;
+  background-color: green;
+  /* heights are HARD-CODED in this file... */
+  height: 800px;
+  width: 65vw;
+  float: left;
+}
+
+/* witness the insanity of centering... */
+.articles-wrapper {
+  /* we're TEXT aligning to center the divs?? */
+  text-align: center;
+  height: 90%;
+}
+
+.articles-wrapper article {
+  /* why not margin: 0 auto ? because there's more than one and we can't center floats! */
+  /* so we must use inline-block for text-align to work >_< */
+  display: inline-block;
+  /* here again, we're using alignment properties originally intended for text! */
+  vertical-align: top;
+  background-color: darkgreen;
+  margin: 10px;
+  width: 17%;
+  box-shadow: 4px 5px rgba(0, 45, 0, 0.667);
+}
+
+.articles-wrapper article * {
+  margin: 10px;
+  /* because we had to modify the text alignment in the outer div,
+  we now have to reset it in here! */
+  text-align: left;
+}
+
+.news {
+  width: 20vw;
+  height: 800px;
+  float: left;
+  overflow: scroll;
+}
+
+.news article {
+  margin: 10px;
+}
+
+.news-article h3 {
+  text-decoration: underline;
+  text-align: left;
+}
+
+.news-article * {
+  text-align: left;
+}
+
+.footer {
+  clear: both;
+  background-color: slategray;
+  height: 100px;
+}
+
+/* ohhhh, right... mobile and tablet... ummmmm, let's make it responsive, i guess... */
+
+/* for fun, change this to 1023 and see what happens on a 1024 screen size */
+@media screen and (max-width: 1024px) {
+  .big-ad {
+    position: relative;
+    float: none;
+    width: 100%;
+    height: 200px;
+  }
+
+  .nav {
+    /* must be set because nav is after big-ad in structure -- to achieve the ad stretching over the navbar*/
+    position: fixed;
+    top: 0px; 
+    width: 100%;
+  }
+
+  .main {
+    position: relative;
+    top: 100px;
+  }
+
+  .news {
+    width: 30vw;
+    float: left;
+  }
+
+  .articles {
+    width: 70vw;
+    float: left;
+    overflow: scroll;
+  }
+
+  .articles-wrapper article {
+    /* gotta undo that crazy centering we did before */
+    display: block;
+    width: 90%
+  }
+}
+
+/* and now smartphone */
+
+@media screen and (max-width: 768px) {
+  .big-ad {
+    position: relative;
+    float: none;
+    width: 100%;
+    height: 200px;
+  }
+
+  .nav {
+    position: fixed;
+    width: 100%;
+    top: 0px;
+  }
+  
+  .main {
+    position: relative;
+  }
+
+  .content {
+    height: auto;
+  }
+
+  .articles {
+    height: auto;
+    width: 100%;
+    float: none;
+  }
+
+  .articles-wrapper article {
+    width: 90%;
+    margin: 20px auto;
+    padding: 10px;
+    max-width: 100%;
+    font-size: .6em;
+    float: none;
+  }
+
+  .news {
+    width: 100%;
+  }
+}
